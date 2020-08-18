@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/aktuehr/js-check-digit-calculator/issues"
   },
-  "homepage": "https://github.com/aktuehr/js-check-digit-calculator#readme"
+  "homepage": "https://github.com/aktuehr/js-check-digit-calculator#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }
