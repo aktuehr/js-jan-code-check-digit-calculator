@@ -1,2 +1,2 @@
-# js-check-digit-calculator
+# js-jan-code-check-digit-calculator
 Check digit calculator for TypeScript.
