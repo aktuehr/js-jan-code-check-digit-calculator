@@ -1,9 +1,10 @@
 {
-  "name": "js-check-digit-calculator",
+  "name": "js-jan-code-check-digit-calculator",
   "version": "0.1.0",
   "description": "Check digit calculator for TypeScript.",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
@@ -11,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aktuehr/js-check-digit-calculator.git"
+    "url": "git+https://github.com/aktuehr/js-jan-code-check-digit-calculator.git"
   },
   "keywords": [
     "checkdigit",
@@ -19,11 +20,11 @@
     "jan"
   ],
   "author": "Akito UEHARA",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aktuehr/js-check-digit-calculator/issues"
+    "url": "https://github.com/aktuehr/js-jan-code-check-digit-calculator/issues"
   },
-  "homepage": "https://github.com/aktuehr/js-check-digit-calculator#readme",
+  "homepage": "https://github.com/aktuehr/js-jan-code-check-digit-calculator#readme",
   "devDependencies": {
     "typescript": "^3.9.7"
   }
