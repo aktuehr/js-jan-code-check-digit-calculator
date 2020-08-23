@@ -5,14 +5,14 @@
  * @param codeWithoutDigit - 12桁の数字の文字列
  * @returns 12桁の数字から求めたチェックデジット
  */
-export const calcJanCodeCheckDigit = (codeWithoutDigit: string): string | Error => {
+export const calcJanCodeCheckDigit = (codeWithoutDigit: string): string => {
   // 引数の値をチェックする
-  if (Number(codeWithoutDigit) === NaN) {
-    return new Error('Contains a non-numeric string.');
+  if (isNaN(Number(codeWithoutDigit))) {
+    throw new Error('Contains a non-numeric string.');
   }
 
   if (codeWithoutDigit.length !== 12) {
-    return new Error('Number is not 12 digits');
+    throw new Error('Number is not 12 digits');
   }
 
   // JANコード上で偶数桁の数字を加算したものと、奇数桁の数字を加算したものを求める
@@ -43,8 +43,12 @@ export const calcJanCodeCheckDigit = (codeWithoutDigit: string): string | Error 
  * @param codeWithoutDigit - 12桁の数字の文字列
  * @returns 12桁の数字から求めたチェックデジット
  */
-export const getCheckDigit = (codeWithoutDigit: string): string | Error => {
-  return calcJanCodeCheckDigit(codeWithoutDigit);
+export const getCheckDigit = (codeWithoutDigit: string): string => {
+  try {
+    return calcJanCodeCheckDigit(codeWithoutDigit);
+  } catch (e) {
+    throw e;
+  }
 }
 
 /**
@@ -53,8 +57,11 @@ export const getCheckDigit = (codeWithoutDigit: string): string | Error => {
  * @param codeWithoutDigit - 12桁の数字の文字列
  * @returns 12桁の数字から求めたチェックデジットを付与した13桁のJANコード 
  */
-export const addCheckDigit = (codeWithoutDigit: string): string | Error => {
-  const checkDigit = calcJanCodeCheckDigit(codeWithoutDigit);
-  if (checkDigit instanceof Error) { return checkDigit; };
-  return codeWithoutDigit + checkDigit;
+export const addCheckDigit = (codeWithoutDigit: string): string => {
+  try {
+    const checkDigit = calcJanCodeCheckDigit(codeWithoutDigit);
+    return codeWithoutDigit + checkDigit;
+  } catch (e) {
+    throw e;
+  }
 }
