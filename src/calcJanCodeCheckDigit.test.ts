@@ -1,4 +1,4 @@
-import { calcJanCodeCheckDigit, getCheckDigit } from './calcJanCodeCheckDigit';
+import { calcJanCodeCheckDigit, getCheckDigit, addCheckDigit } from './calcJanCodeCheckDigit';
 
 describe('calcJanCodeCheckDigit', () => {
   describe('引数に数値以外の文字を含めるとエラーになる', () => {
@@ -11,9 +11,9 @@ describe('calcJanCodeCheckDigit', () => {
     for (const code of errorCodes) {
       test(code, () => {
         expect(() => calcJanCodeCheckDigit(code)).toThrow();
-      })
+      });
     }
-  })
+  });
 
   describe('引数に12桁以外の数値を与えるとエラーになる', () => {
     const errorCodes = [
@@ -26,7 +26,7 @@ describe('calcJanCodeCheckDigit', () => {
         expect(() => calcJanCodeCheckDigit(code)).toThrow();
       })
     }
-  })
+  });
 
   describe('12桁の数値を与えるとチェックデジットが取得できる', () => {
     const successCodeAndDigits = [
@@ -39,9 +39,9 @@ describe('calcJanCodeCheckDigit', () => {
     for (const code of successCodeAndDigits) {
       test(code[0], () => {
         expect(calcJanCodeCheckDigit(code[0])).toBe(code[1]);
-      })
+      });
     }
-  })
+  });
 });
 
 /** calcJanCodeCheckDigit と同じ結果になる */
@@ -56,9 +56,9 @@ describe('getCheckDigit', () => {
     for (const code of errorCodes) {
       test(code, () => {
         expect(() => getCheckDigit(code)).toThrow();
-      })
+      });
     }
-  })
+  });
 
   describe('引数に12桁以外の数値を与えるとエラーになる', () => {
     const errorCodes = [
@@ -69,9 +69,9 @@ describe('getCheckDigit', () => {
     for (const code of errorCodes) {
       test(code, () => {
         expect(() => getCheckDigit(code)).toThrow();
-      })
+      });
     }
-  })
+  });
 
   describe('12桁の数値を与えるとチェックデジットが取得できる', () => {
     const successCodeAndDigits = [
@@ -84,7 +84,51 @@ describe('getCheckDigit', () => {
     for (const code of successCodeAndDigits) {
       test(code[0], () => {
         expect(getCheckDigit(code[0])).toBe(code[1]);
-      })
+      });
     }
-  })
+  });
 });
+
+describe('addCheckDigit', () => {
+  describe('引数に数値以外の文字を含めるとエラーになる', () => {
+    const errorCodes = [
+      '123456789a01',
+      'A12345678901',
+      '12345678901あ',
+      'abcdefghijkl'
+    ];
+    for (const code of errorCodes) {
+      test(code, () => {
+        expect(() => addCheckDigit(code)).toThrow();
+      });
+    }
+  });
+
+  describe('引数に12桁以外の数値を与えるとエラーになる', () => {
+    const errorCodes = [
+      '1',
+      '12345678901',
+      '1234567890123'
+    ];
+    for (const code of errorCodes) {
+      test(code, () => {
+        expect(() => addCheckDigit(code)).toThrow();
+      });
+    }
+  });
+
+  describe('12桁の数値を与えるとチェックデジット付の13桁の数値が取得できる', () => {
+    const successCodeAndDigits = [
+      ['456995111617', '4569951116179'],
+      ['456995111025', '4569951110252'],
+      ['491009971074', '4910099710741'],
+      ['351386327796', '3513863277962'],
+      ['497163300200', '4971633002005'],
+    ];
+    for (const code of successCodeAndDigits) {
+      test(code[0], () => {
+        expect(addCheckDigit(code[0])).toBe(code[1]);
+      });
+    }
+  });
+})
