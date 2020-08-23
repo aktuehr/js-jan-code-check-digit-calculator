@@ -1,5 +1,5 @@
 # js-jan-code-check-digit-calculator
-Calculator of JAN Check-digit for TypeScript.
+Calculator of JAN Check-digit for JavaScript/TypeScript.
 
 ## Usage
 ```typescript

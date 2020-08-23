@@ -1,7 +1,7 @@
 {
   "name": "js-jan-code-check-digit-calculator",
   "version": "0.1.0",
-  "description": "Check digit calculator for TypeScript.",
+  "description": "Calculator of JAN Check-digit for JavaScript/TypeScript.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
