@@ -19,7 +19,7 @@
     "barcode",
     "jan"
   ],
-  "author": "Akito UEHARA",
+  "author": "Akito UEHARA<akt.uehr@gmail.com> (https://github.com/aktuehr)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aktuehr/js-jan-code-check-digit-calculator/issues"
