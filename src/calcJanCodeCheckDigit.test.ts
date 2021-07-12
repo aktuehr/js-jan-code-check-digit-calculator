@@ -35,6 +35,7 @@ describe('calcJanCodeCheckDigit', () => {
       ['491009971074', '1'],
       ['351386327796', '2'],
       ['497163300200', '5'],
+      ['497163300205', '0'],
     ];
     for (const code of successCodeAndDigits) {
       test(code[0], () => {
