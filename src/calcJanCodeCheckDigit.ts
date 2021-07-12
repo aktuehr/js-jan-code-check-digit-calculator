@@ -33,8 +33,15 @@ export const calcJanCodeCheckDigit = (codeWithoutDigit: string): string => {
   // 偶数桁の数値を加算したものを加算する
   const includeCheckDigitValue = sumEvenDigitArray + tripledOddDigitSum;
 
-  // 下一桁を10から減算したものがチェックデジット
-  return (10 - includeCheckDigitValue % 10).toString();
+  const lastDigit = includeCheckDigitValue % 10;
+  if (lastDigit === 0) {
+    // 下一桁が0となった場合は0がチェックデジット
+    return '0';
+  } else {
+    // 下一桁が0以外の場合、下一桁を10から減算したものがチェックデジット
+    return (10 - includeCheckDigitValue % 10).toString();
+  }
+
 }
 
 /**
